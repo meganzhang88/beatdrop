@@ -1,0 +1,21 @@
+
+
+.mainBody {
+    background-color: blue;
+    display: grid;
+    grid-template-columns: 90px auto 90px;
+
+}
+
+.navColumn {
+    background-color: pink;
+    height: 100%;
+}
+
+.profileColumn {
+    background-color: green;
+}
+
+.suggestionColumn {
+    background-color: pink;
+}
