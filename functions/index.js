@@ -1,11 +1,11 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 
-admin.initializeApp();
+admin.initializeApp({
+    credential: admin.credential.cert(require('../key/beatdrop-637f3-firebase-adminsdk-nzrc1-151d4d3f97.json'))
+});
 
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
+
 exports.helloWorld = functions.https.onRequest((request, response) => {
   response.send("hello, from ady!");
 });
