@@ -11,7 +11,12 @@ app.get('/posts', (req, res) => {
     .then((data) => {
         let posts = [];
         data.forEach((doc) => {
-            posts.push(doc.data());
+            posts.push({
+                postId: doc.id,
+                body: doc.data().body,
+                userHandle: doc.data().username,
+                createdAt: doc.data().createdAt,
+            });
         });
         return res.json(posts);
     })
