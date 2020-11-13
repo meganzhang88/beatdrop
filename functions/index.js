@@ -7,7 +7,7 @@ const express = require('express');
 const app = express();
 
 app.get('/posts', (req, res) => {
-    admin.firestore().collection('posts').get()
+    admin.firestore().collection('posts').orderBy('createdAt', 'desc').get()
     .then((data) => {
         let posts = [];
         data.forEach((doc) => {
