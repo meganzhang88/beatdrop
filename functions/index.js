@@ -23,6 +23,9 @@ admin.firestore().collection('posts').get()
 });
 
 exports.createPost = functions.https.onRequest((req, res) => {
+    if (req.method !== 'POST'){
+        return res.status(400).json({ error: 'Method not allowed'});
+    }
 const newPost = {
     body: req.body.body,
     username: req.body.username,
