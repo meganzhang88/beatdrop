@@ -19,5 +19,36 @@ let db = {
             likeCount: 5,
             commentCount:2
         }
+    ],
+    comments: [
+        {
+            username: 'user',
+            postId: 'postID',
+            body: 'blah blah blah',
+            createdAt: '2020-01-11T11:46:01.018Z'
+        }
     ]
-}
+};
+const userDetails = {
+    // Redux data
+    credentials: {
+        userId: 'sample',
+            email: 'user@email.com',
+            handle: 'user',
+            createdAt: '2020-01-11T11:46:01.018Z',
+            imageUrl: 'image/hehe/haha',
+            bio: 'sample bio :)',
+            website: 'https://spotifylink.com',
+            location: 'NC, US'
+    },
+    likes: [
+        {
+            username: 'user',
+            postId: 'randomId'
+        },
+        {
+            username: 'user',
+            postId: 'randomId2'
+        }
+    ]
+};
