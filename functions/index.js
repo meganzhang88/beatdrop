@@ -46,7 +46,7 @@ app.post("/notifications", FBAuth, markNotificationsRead);
 exports.api = functions.https.onRequest(app);
 
 exports.deleteNotificationOnUnlike = functions.firestore
-  .document("/likes/{id}")
+  .document('/likes/{id}')
   .onDelete((snapshot) => {
     return db
       .doc(`/notifications/${snapshot.id}`)
@@ -58,10 +58,10 @@ exports.deleteNotificationOnUnlike = functions.firestore
   });
 
 exports.createNotificationOnLike = functions.firestore
-  .document("/likes/{id}")
+  .document('/likes/{id}')
   .onCreate((snapshot) => {
     return db
-      .doc(`/posts/${snapshot.data().postIs}`)
+      .doc(`/posts/${snapshot.data().postId}`)
       .get()
       .then((doc) => {
         if (doc.exists && doc.data().username !== snapshot.data().username) {
@@ -69,7 +69,7 @@ exports.createNotificationOnLike = functions.firestore
             createdAt: new Date().toISOString(),
             recipient: doc.data().username,
             sender: snapshot.data().username,
-            type: "like",
+            type: 'like',
             read: false,
             postId: doc.id,
           });
@@ -81,10 +81,10 @@ exports.createNotificationOnLike = functions.firestore
   });
 
 exports.createNotificationOnComment = functions.firestore
-  .document("/comments/{id}")
+  .document('/comments/{id}')
   .onCreate((snapshot) => {
     return db
-      .doc(`/posts/${snapshot.data().postIs}`)
+      .doc(`/posts/${snapshot.data().postId}`)
       .get()
       .then((doc) => {
         if (doc.exists && doc.data().username !== snapshot.data().username) {
@@ -92,7 +92,7 @@ exports.createNotificationOnComment = functions.firestore
             createdAt: new Date().toISOString(),
             recipient: doc.data().username,
             sender: snapshot.data().username,
-            type: "comment",
+            type: 'comment',
             read: false,
             postId: doc.id,
           });
