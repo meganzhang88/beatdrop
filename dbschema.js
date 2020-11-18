@@ -33,9 +33,9 @@ let db = {
             recipient: 'user',
             sender: 'senderName',
             read: 'true | false',
-            postId: '',
+            postId: 'QJqQ6Y5n7DPkMuXuqXSu',
             type: 'like | comment',
-            createdAt: ''
+            createdAt: '2020-01-11T11:46:01.018Z'
         }
     ]
 };
