@@ -46,7 +46,7 @@ app.post("/notifications", FBAuth, markNotificationsRead);
 exports.api = functions.https.onRequest(app);
 
 exports.deleteNotificationOnUnlike = functions.firestore
-  .document('/likes/{id}')
+  .document('likes/{id}')
   .onDelete((snapshot) => {
     return db
       .doc(`/notifications/${snapshot.id}`)
@@ -58,7 +58,7 @@ exports.deleteNotificationOnUnlike = functions.firestore
   });
 
 exports.createNotificationOnLike = functions.firestore
-  .document('/likes/{id}')
+  .document('likes/{id}')
   .onCreate((snapshot) => {
     return db
       .doc(`/posts/${snapshot.data().postId}`)
@@ -81,7 +81,7 @@ exports.createNotificationOnLike = functions.firestore
   });
 
 exports.createNotificationOnComment = functions.firestore
-  .document('/comments/{id}')
+  .document('comments/{id}')
   .onCreate((snapshot) => {
     return db
       .doc(`/posts/${snapshot.data().postId}`)
