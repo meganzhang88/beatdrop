@@ -134,7 +134,7 @@ exports.getAuthenticatedUser = (req, res) => {
                     notificationId: doc.id
                 })
             });
-            return res.jdon(userData);
+            return res.json(userData);
         })
         .catch(err => {
             console.error(err);
