@@ -27,6 +27,16 @@ let db = {
             body: 'blah blah blah',
             createdAt: '2020-01-11T11:46:01.018Z'
         }
+    ],
+    notifications: [
+        {
+            recipient: 'user',
+            sender: 'senderName',
+            read: 'true | false',
+            postId: 'QJqQ6Y5n7DPkMuXuqXSu',
+            type: 'like | comment',
+            createdAt: '2020-01-11T11:46:01.018Z'
+        }
     ]
 };
 const userDetails = {
