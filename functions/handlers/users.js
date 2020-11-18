@@ -118,7 +118,23 @@ exports.getAuthenticatedUser = (req, res) => {
             data.forEach(doc => {
                 userData.likes.push(doc.data());
             });
-            return res.json(userData);
+            return randomBytes.collection('notifications').where('recipient', "==", req.user.handle)
+                .orderBy('createdAt', 'desc').get();
+        })
+        .then(data => {
+            userData.notifications = [];
+            data.forEach(doc => {
+                userData.notitfications.push({
+                    recipient: doc.data().recipient,
+                    sender: doc.data().sender,
+                    createdAt: doc.data().createdAt,
+                    postId: doc.data().type,
+                    type: doc.data().recipient,
+                    read: doc.data().read,
+                    notificationId: doc.id
+                })
+            });
+            return res.jdon(userData);
         })
         .catch(err => {
             console.error(err);
