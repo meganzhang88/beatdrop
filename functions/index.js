@@ -98,10 +98,7 @@ exports.createNotificationOnComment = functions.firestore
           });
         }
       })
-      .catch((err) => {
-        console.error(err);
-        return;
-      });
+      .catch((err) =>  console.error(err));
   });
 
 exports.onUserImageChange = functions.firestore
