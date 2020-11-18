@@ -123,7 +123,7 @@ exports.onUserImageChange = functions.firestore
           });
           return batch.commit();
         });
-    }
+    } else return true;
   });
 
   exports.onPostDelete = functions.firestore
@@ -136,13 +136,13 @@ exports.onUserImageChange = functions.firestore
             data.forEach(doc => {
                 batch.delete(db.doc(`/comments/${doc.id}`));
             })
-            return db.collection('likes').where('postId', '==', postId);
+            return db.collection('likes').where('postId', '==', postId).get();
         })
         .then(data => {
             data.forEach(doc => {
                 batch.delete(db.doc(`/likes/${doc.id}`));
             })
-            return db.collection('notifications').where('postId', '==', postId);
+            return db.collection('notifications').where('postId', '==', postId).get();
         })
         .then(data => {
             data.forEach(doc => {
