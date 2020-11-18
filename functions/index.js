@@ -28,7 +28,7 @@ const { db } = require("./util/admin");
 app.get("/posts", getAllPosts);
 app.post("/post", FBAuth, postOnePost);
 app.get("/post/:postId", getPost);
-app.delete("/post/postId", FBAuth, deletePost);
+app.delete("/post/:postId", FBAuth, deletePost);
 app.post("/post/:postId/comment", FBAuth, commentOnPost);
 //TODO: deletePost, likePost, unlikePost
 app.get("/post/:postId/like", FBAuth, likePost);
