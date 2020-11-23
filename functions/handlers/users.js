@@ -178,7 +178,7 @@ exports.getAuthenticatedUser = (req, res) => {
     .then((data) => {
       userData.notifications = [];
       data.forEach((doc) => {
-        userData.notifications.push({
+        userData.notitfications.push({
           recipient: doc.data().recipient,
           sender: doc.data().sender,
           createdAt: doc.data().createdAt,
@@ -251,7 +251,7 @@ exports.markNotificationsRead = (req, res) => {
     let batch = db.batch();
     req.body.forEach(notificationId => {
         const notification = db.doc(`/notifications/${notificationId}`);
-        batch.update(notification, {read: true});
+        batch.update(notificaiton, {read: true});
     });
     batch.commit()
         .then(() => {
