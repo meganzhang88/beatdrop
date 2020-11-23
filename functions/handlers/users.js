@@ -122,7 +122,7 @@ exports.getUserDetails = (req, res) => {
         userData.user = doc.data();
         return db
           .collection("posts")
-          .where("handle", "==", req.params.handle)
+          .where("userHandle", "==", req.params.handle)
           .orderBy("createdAt", "desc")
           .get();
       } else {
@@ -135,7 +135,7 @@ exports.getUserDetails = (req, res) => {
         userData.posts.push({
           body: doc.data().body,
           createdAt: doc.data().createdAt,
-          handle: doc.data().handle,
+          userHandle: doc.data().handle,
           userImage: doc.data().userImage,
           likeCount: doc.data().likeCount,
           commentCount: doc.data().commentCount,
@@ -160,7 +160,7 @@ exports.getAuthenticatedUser = (req, res) => {
         userData.credentials = doc.data();
         return db
           .collection("likes")
-          .where("handle", "==", req.user.handle)
+          .where("userHandle", "==", req.user.handle)
           .get();
       }
     })

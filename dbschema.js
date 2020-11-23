@@ -13,7 +13,7 @@ let db = {
     ],
     posts: [
         {
-            handle: 'a',
+            userHandle: 'a',
             body: 'post body',
             createdAt: '2020-11-22T22:17:11.214Z',
             likeCount: 5,
@@ -22,7 +22,7 @@ let db = {
     ],
     comments: [
         {
-            handle: 'user',
+            userHandle: 'user',
             postId: 'postID',
             body: 'blah blah blah',
             createdAt: '2020-01-11T11:46:01.018Z'
@@ -53,11 +53,11 @@ const userDetails = {
     },
     likes: [
         {
-            handle: 'user',
+            userHandle: 'user',
             postId: 'randomId'
         },
         {
-            handle: 'user',
+            userHandle: 'user',
             postId: 'randomId2'
         }
     ]
