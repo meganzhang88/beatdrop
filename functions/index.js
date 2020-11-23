@@ -55,12 +55,12 @@ exports.createNotificationOnLike = functions
       .then((doc) => {
         if (
           doc.exists &&
-          doc.data().userHandle !== snapshot.data().userHandle
+          doc.data().username !== snapshot.data().username
         ) {
           return db.doc(`/notifications/${snapshot.id}`).set({
             createdAt: new Date().toISOString(),
-            recipient: doc.data().userHandle,
-            sender: snapshot.data().userHandle,
+            recipient: doc.data().username,
+            sender: snapshot.data().username,
             type: 'like',
             read: false,
             postId: doc.id
@@ -89,12 +89,12 @@ exports.createNotificationOnComment = functions
       .then((doc) => {
         if (
           doc.exists &&
-          doc.data().userHandle !== snapshot.data().userHandle
+          doc.data().username !== snapshot.data().username
         ) {
           return db.doc(`/notifications/${snapshot.id}`).set({
             createdAt: new Date().toISOString(),
-            recipient: doc.data().userHandle,
-            sender: snapshot.data().userHandle,
+            recipient: doc.data().username,
+            sender: snapshot.data().username,
             type: 'comment',
             read: false,
             postId: doc.id
@@ -117,7 +117,7 @@ exports.onUserImageChange = functions
       const batch = db.batch();
       return db
         .collection('posts')
-        .where('userHandle', '==', change.before.data().handle)
+        .where('username', '==', change.before.data().handle)
         .get()
         .then((data) => {
           data.forEach((doc) => {

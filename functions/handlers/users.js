@@ -122,7 +122,7 @@ exports.getUserDetails = (req, res) => {
         userData.user = doc.data();
         return db
           .collection("posts")
-          .where("userHandle", "==", req.params.handle)
+          .where("username", "==", req.params.handle)
           .orderBy("createdAt", "desc")
           .get();
       } else {
@@ -135,7 +135,7 @@ exports.getUserDetails = (req, res) => {
         userData.posts.push({
           body: doc.data().body,
           createdAt: doc.data().createdAt,
-          userHandle: doc.data().userHandle,
+          username: doc.data().username,
           userImage: doc.data().userImage,
           likeCount: doc.data().likeCount,
           commentCount: doc.data().commentCount,
@@ -160,7 +160,7 @@ exports.getAuthenticatedUser = (req, res) => {
         userData.credentials = doc.data();
         return db
           .collection("likes")
-          .where("userHandle", "==", req.user.handle)
+          .where("username", "==", req.user.handle)
           .get();
       }
     })
@@ -178,7 +178,7 @@ exports.getAuthenticatedUser = (req, res) => {
     .then((data) => {
       userData.notifications = [];
       data.forEach((doc) => {
-        userData.notitfications.push({
+        userData.notifications.push({
           recipient: doc.data().recipient,
           sender: doc.data().sender,
           createdAt: doc.data().createdAt,
@@ -251,7 +251,7 @@ exports.markNotificationsRead = (req, res) => {
     let batch = db.batch();
     req.body.forEach(notificationId => {
         const notification = db.doc(`/notifications/${notificationId}`);
-        batch.update(notificaiton, {read: true});
+        batch.update(notification, {read: true});
     });
     batch.commit()
         .then(() => {
