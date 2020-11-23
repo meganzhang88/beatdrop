@@ -1,10 +1,10 @@
 let db = {
     users: [
         {
-            userId: 'sample',
-            email: 'user@email.com',
-            handle: 'user',
-            createdAt: '2020-01-11T11:46:01.018Z',
+            userId: '7vVlnbiv8mOlM2yqlr7xlvHSFp13',
+            email: 'a@email.com',
+            handle: 'a',
+            createdAt: '2020-11-22T22:17:11.214Z',
             imageUrl: 'image/hehe/haha',
             bio: 'sample bio :)',
             website: 'https://spotifylink.com',
@@ -13,16 +13,16 @@ let db = {
     ],
     posts: [
         {
-            username: 'user',
+            handle: 'a',
             body: 'post body',
-            createdAt: '2020-01-11T11:46:01.018Z',
+            createdAt: '2020-11-22T22:17:11.214Z',
             likeCount: 5,
             commentCount:2
         }
     ],
     comments: [
         {
-            username: 'user',
+            handle: 'user',
             postId: 'postID',
             body: 'blah blah blah',
             createdAt: '2020-01-11T11:46:01.018Z'
@@ -53,11 +53,11 @@ const userDetails = {
     },
     likes: [
         {
-            username: 'user',
+            handle: 'user',
             postId: 'randomId'
         },
         {
-            username: 'user',
+            handle: 'user',
             postId: 'randomId2'
         }
     ]
