@@ -131,7 +131,7 @@ exports.getUserDetails = (req, res) => {
     })
     .then((data) => {
       userData.posts = [];
-      data.forEach((dpc) => {
+      data.forEach((doc) => {
         userData.posts.push({
           body: doc.data().body,
           createdAt: doc.data().createdAt,
@@ -169,7 +169,7 @@ exports.getAuthenticatedUser = (req, res) => {
       data.forEach((doc) => {
         userData.likes.push(doc.data());
       });
-      return randomBytes
+      return db
         .collection("notifications")
         .where("recipient", "==", req.user.handle)
         .orderBy("createdAt", "desc")
