@@ -43,13 +43,13 @@ const userDetails = {
     // Redux data
     credentials: {
         userId: 'sample',
-            email: 'user@email.com',
-            handle: 'user',
-            createdAt: '2020-01-11T11:46:01.018Z',
-            imageUrl: 'image/hehe/haha',
-            bio: 'sample bio :)',
-            website: 'https://spotifylink.com',
-            location: 'NC, US'
+        email: 'user@email.com',
+        handle: 'user',
+        createdAt: '2020-01-11T11:46:01.018Z',
+        imageUrl: 'image/hehe/haha',
+        bio: 'sample bio :)',
+        website: 'https://spotifylink.com',
+        location: 'NC, US'
     },
     likes: [
         {
