@@ -169,7 +169,7 @@ exports.getAuthenticatedUser = (req, res) => {
       data.forEach((doc) => {
         userData.likes.push(doc.data());
       });
-      return db
+      return randomBytes
         .collection("notifications")
         .where("recipient", "==", req.user.handle)
         .orderBy("createdAt", "desc")
