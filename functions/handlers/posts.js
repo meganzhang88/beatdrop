@@ -10,7 +10,7 @@ exports.getAllPosts = (req, res) => {
         posts.push({
           postId: doc.id,
           body: doc.data().body,
-          userHandle: doc.data().username,
+          userHandle: doc.data().handle,
           createdAt: doc.data().createdAt,
           commentCount: doc.data().commentCount,
           likeCount: doc.data().likeCount,
@@ -32,7 +32,7 @@ exports.postOnePost = (req, res) => {
 
   const newPost = {
     body: req.body.body,
-    username: req.user.handle,
+    handle: req.user.handle,
     userImage: req.user.imageUrl,
     createdAt: new Date().toISOString(),
     likeCount: 0,
@@ -91,7 +91,7 @@ exports.commentOnPost = (req, res) => {
     body: req.body.body,
     createdAt: new Date().toISOString(),
     postId: req.params.postId,
-    username: req.user.handle,
+    handle: req.user.handle,
     userImage: req.user.imageUrl,
   };
 
@@ -119,7 +119,7 @@ exports.commentOnPost = (req, res) => {
 exports.likePost = (req, res) => {
   const likeDocument = db
     .collection("likes")
-    .where("username", "==", req.user.handle)
+    .where("handle", "==", req.user.handle)
     .where("postId", "==", req.params.postId)
     .limit(1);
 
@@ -144,7 +144,7 @@ exports.likePost = (req, res) => {
           .collection("likes")
           .add({
             postId: req.params.postId,
-            username: req.user.handle,
+            handle: req.user.handle,
           })
           .then(() => {
             postData.likeCount++;
@@ -167,7 +167,7 @@ exports.likePost = (req, res) => {
 exports.unlikePost = (req, res) => {
   const likeDocument = db
     .collection("likes")
-    .where("username", "==", req.user.handle)
+    .where("handle", "==", req.user.handle)
     .where("postId", "==", req.params.postId)
     .limit(1);
 
@@ -216,7 +216,7 @@ exports.deletePost = (req, res) => {
             if(!doc.exists) {
                 return res.status(404).json({ error: 'Post not found'});
             }
-            if(doc.data().username !== req.user.handle){
+            if(doc.data().handle !== req.user.handle){
                 return res.status(403).json({error: 'Unauthorized'});
             } else {
                 return document.delete();
