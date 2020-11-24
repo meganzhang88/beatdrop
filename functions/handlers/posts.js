@@ -14,7 +14,8 @@ exports.getAllPosts = (req, res) => {
           createdAt: doc.data().createdAt,
           commentCount: doc.data().commentCount,
           likeCount: doc.data().likeCount,
-          userImage: doc.data().userImage
+          userImage: doc.data().userImage,
+          uri: doc.data().uri
         });
       });
       return res.json(posts);
@@ -29,7 +30,9 @@ exports.postOnePost = (req, res) => {
   if (req.body.body.trim() === "") {
     return res.status(400).json({ body: "Body must not be empty" });
   }
-
+  if (req.body.uri.trim() === "") {
+    return res.status(400).json({ uri: "Spotify Link must not be empty" });
+  }
   const newPost = {
     body: req.body.body,
     userHandle: req.user.handle,
@@ -37,6 +40,7 @@ exports.postOnePost = (req, res) => {
     createdAt: new Date().toISOString(),
     likeCount: 0,
     commentCount: 0,
+    uri: req.body.uri
   };
 
   db.collection("posts")
