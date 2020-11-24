@@ -140,8 +140,7 @@ exports.getUserDetails = (req, res) => {
           likeCount: doc.data().likeCount,
           commentCount: doc.data().commentCount,
           postId: doc.id,
-          uri: doc.data().uri,
-          userWebsite: doc.data().website
+          uri: doc.data().uri
         });
       });
       return res.json(userData);

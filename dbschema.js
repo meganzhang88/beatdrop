@@ -18,8 +18,7 @@ let db = {
             createdAt: '2020-11-22T22:17:11.214Z',
             likeCount: 5,
             commentCount:2,
-            uri: 'dummyuri',
-            userWebsite: 'spotifyacc/website.com'
+            uri: 'dummyuri'
         }
     ],
     comments: [
