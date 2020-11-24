@@ -16,7 +16,7 @@ exports.getAllPosts = (req, res) => {
           likeCount: doc.data().likeCount,
           userImage: doc.data().userImage,
           uri: doc.data().uri,
-          website: doc.data().website
+          userWebsite: doc.data().userWebsite
         });
       });
       return res.json(posts);
@@ -42,7 +42,7 @@ exports.postOnePost = (req, res) => {
     likeCount: 0,
     commentCount: 0,
     uri: req.body.uri,
-    website: req.user.website
+    userWebsite: req.user.website
   };
 
   db.collection("posts")

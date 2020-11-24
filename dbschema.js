@@ -19,7 +19,7 @@ let db = {
             likeCount: 5,
             commentCount:2,
             uri: 'dummyuri',
-            website: 'spotifyacc'
+            userWebsite: 'spotifyacc/website.com'
         }
     ],
     comments: [
